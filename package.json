@@ -1,0 +1,11 @@
+{
+  "name": "desafio-fullstack-juansapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:JuanSgarbi/desafio-fullstack-juansAPI.git",
+  "author": "Juan Sgarbi <juan.sgarbi1@hotmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.0.2"
+  }
+}
