@@ -10,7 +10,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { PhoneNumber } from "./phoneNumber.entity";
 
 @Entity("users")
 export class User {
@@ -32,10 +31,8 @@ export class User {
   @Column({ default: false })
   is_client: boolean;
 
-  @OneToMany(() => PhoneNumber, (phone_number) => phone_number.user, {
-    eager: true,
-  })
-  phone_numbers: PhoneNumber[];
+  @Column()
+  phone_number: string;
 
   @OneToMany(() => User, (user) => user.client)
   @JoinColumn({ name: "clientId" })

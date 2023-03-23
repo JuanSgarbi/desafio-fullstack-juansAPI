@@ -23,10 +23,16 @@ export const createSessionService = async (
     throw new AppError("Invalid credentials", 401);
   }
 
-  const token: string = jwt.sign({}, process.env.SECRET_KEY!, {
-    expiresIn: "24h",
-    subject: String(findUser.id),
-  });
+  const token: string = jwt.sign(
+    {
+      is_client: findUser.is_client,
+    },
+    process.env.SECRET_KEY!,
+    {
+      expiresIn: "24h",
+      subject: findUser.id,
+    }
+  );
 
   return token;
 };
