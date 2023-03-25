@@ -11,14 +11,13 @@ export const updateUserService = async (
 
   const findUser = await userRepository.findOneBy({ id: userId });
 
-  const updateUser = userRepository.create({
-    ...findUser,
-    ...userdata,
-  });
+  const userChanges = { ...userdata };
 
-  await userRepository.save(updateUser);
+  Object.assign(findUser!, userChanges);
 
-  const returnedUser = returnedUserSchema.parse(updateUser);
+  await userRepository.save(findUser!);
+
+  const returnedUser = returnedUserSchema.parse(findUser);
 
   return returnedUser;
 };

@@ -18,9 +18,6 @@ export const ensureUserIsContactMiddleware = async (
 
   if (!userContact) throw new AppError("User not found", 404);
 
-  if (userContact.is_client)
-    throw new AppError("This user is not a Contact", 401);
-
   if (userContact.clientId && userContact.clientId !== userClient!.id)
     throw new AppError("This client does not own this contact", 401);
 

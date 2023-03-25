@@ -28,7 +28,7 @@ export class User {
   @Column()
   password: string;
 
-  @Column({ default: false })
+  @Column({ default: true })
   is_client: boolean;
 
   @Column()
@@ -44,7 +44,6 @@ export class User {
   @Column({ nullable: true })
   clientId: string;
 
-  @BeforeUpdate()
   @BeforeInsert()
   hashPassword(): void {
     if (this.password) this.password = hashSync(this.password, 10);

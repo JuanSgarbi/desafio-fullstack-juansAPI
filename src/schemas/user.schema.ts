@@ -5,7 +5,7 @@ export const createUserSchema = z.object({
   email: z.string().email().max(50),
   password: z.string().max(120),
   phone_number: z.string().max(11),
-  is_client: z.boolean().default(false),
+  is_client: z.boolean().default(true),
 });
 
 const contactsSchema = z.object({

@@ -1,12 +1,18 @@
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entity";
-import { returnedAllUserSchema } from "../../schemas/user.schema";
+import {
+  returnedAllUserSchema,
+  returnedUserSchema,
+} from "../../schemas/user.schema";
 
-export const listUsersService = async () => {
+export const listUsersService = async (userId: string) => {
   const userRepository = AppDataSource.getRepository(User);
 
-  const userList = await userRepository.find({ relations: { contacts: true } });
+  const user = await userRepository.findOne({
+    where: { id: userId },
+    relations: { contacts: true },
+  });
 
-  const returnedUserList = returnedAllUserSchema.parse(userList);
-  return returnedUserList;
+  const returnedUser = returnedUserSchema.parse(user);
+  return returnedUser;
 };

@@ -5,6 +5,7 @@ export const listUsersController = async (
   req: Request,
   res: Response
 ): Promise<Response> => {
-  const data = await listUsersService();
+  const userId = req.user.id;
+  const data = await listUsersService(userId);
   return res.json(data);
 };
