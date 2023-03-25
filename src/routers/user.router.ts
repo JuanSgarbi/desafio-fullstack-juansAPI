@@ -19,5 +19,10 @@ userRoutes.post(
 );
 userRoutes.get("", ensureUserIsAuthMiddleware, listUsersController);
 userRoutes.get("/:id", retieveUserController);
-userRoutes.patch("/:id", ensureUserIsAuthMiddleware, updateUserController);
+userRoutes.patch(
+  "/:id",
+  ensureUserIsAuthMiddleware,
+  verifyEmailAlreadyExistMiddleware,
+  updateUserController
+);
 userRoutes.delete("/:id", ensureUserIsAuthMiddleware, deleteUserController);
