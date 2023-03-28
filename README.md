@@ -9,13 +9,14 @@
 # Para instalar a api
 
 > No primeiro uso utilize
-
+> Obs: Lembre-se de setar as variáveis de ambiente de acordo com o arquivo .env.exemple
 ```
 yarn
-# após instalar as dependências utilize
+# após instalar as dependências utilize para realizar as migrações
+yarn typeorm migration:run -d src/data-source.ts
+# utilize para rodar a aplicação
 yarn dev
 ```
-> Obs: Lembre-se de setar as variáveis de ambiente de acordo com o arquivo .env.exemple
 
 > Após o primeiro uso utilize 
 
